@@ -17,8 +17,8 @@ class TestCasesPage:
     @allure.title('User can see the {case} case')
     @severity(severity_level.NORMAL)
     @allure.feature('User can see all the cases')
-    @pytest.mark.parametrize('case, locator', list(zip(CasesData.cases_list, CasesData.locators)))
-    def test_case_page(self, browser, case: str, locator: tuple):
+    @pytest.mark.parametrize('case, locator', list(zip(CasesData.CASES_LIST, CasesData.LOCATORS)))
+    def test_case_page(self, browser, case: str, locator: tuple) -> None:
         """
         test checks availability of each case page(doesn't check content!)
         """

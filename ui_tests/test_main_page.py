@@ -19,7 +19,7 @@ class TestMainPage:
     @allure.title('The server is alive')
     @severity(severity_level.BLOCKER)
     @allure.feature('User can see the main page')
-    def test_main_page_response(self):
+    def test_main_page_response(self) -> None:
         """
         server is alive
         """
@@ -29,8 +29,8 @@ class TestMainPage:
     @severity(severity_level.CRITICAL)
     @allure.feature('User can go to all top links')
     @allure.title('User can see and go to the "{endpoint}" link')
-    @pytest.mark.parametrize('endpoint, locator', list(zip(MainPageData.endpoints, MainPageData.links_list)))
-    def test_link_names(self, browser, endpoint: str, locator: tuple):
+    @pytest.mark.parametrize('endpoint, locator', list(zip(MainPageData.ENDPOINTS, MainPageData.LINKS_LIST)))
+    def test_link_names(self, browser, endpoint: str, locator: tuple) -> None:
         """
         user can go to all top links from the main page
         """
@@ -44,8 +44,8 @@ class TestMainPage:
     @allure.feature('User can go to the policy page and to the social page links')
     @allure.title('User can see and go to the "{element}" link')
     @pytest.mark.parametrize('element, locator',
-                             list(zip(MainPageData.bottom_endpoints, MainPageData.bottom_elem_list)))
-    def test_bottom_elements_are_active(self, element: str, locator: tuple, browser):
+                             list(zip(MainPageData.BOTTOM_ENDPOINTS, MainPageData.bottom_elem_list)))
+    def test_bottom_elements_are_active(self, element: str, locator: tuple, browser) -> None:
         """
         user can go to all bottom links from the main page
         """

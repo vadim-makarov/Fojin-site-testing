@@ -18,7 +18,7 @@ class TestMainPageForm:
     @allure.feature('User sends correct data')
     @allure.description('User is scrolling to the bottom and sends correct data')
 
-    def test_positive_form_data(self, browser, positive_data_case: list):
+    def test_positive_form_data(self, browser, positive_data_case: list) -> None:
         """
           Test fills the application with correct data and checks the popup answer
         """
@@ -34,7 +34,7 @@ class TestMainPageForm:
     @severity(severity_level.MINOR)
     @allure.feature("User sends a incorrect data")
     @allure.description('User is scrolling to the bottom and sends wrong data')
-    def test_negative_form_data(self, browser, negative_data_case: list):
+    def test_negative_form_data(self, browser, negative_data_case: list) -> None:
         """
           Test fills the application with incorrect data and checks the answer
         """
