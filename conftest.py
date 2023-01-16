@@ -11,7 +11,7 @@ from ui_tests.pages.data import FormData
 
 
 @pytest.fixture(params=["chrome", "firefox"])
-def browser(request):
+def browser(request) -> webdriver:
     """
     the fixture downloads the latest driver and creates the browser instance with passed options
     """
@@ -38,6 +38,11 @@ def browser(request):
 
 def screenshot(browser, name: str):
     allure.attach(browser.get_screenshot_as_png(), name=f"Screenshot {name}", attachment_type=AttachmentType.PNG)
+    """
+    Gets a screenshot and attaches it to the report
+    """
+    allure.attach(browser.get_screenshot_as_png(), name=f"Screenshot fail_{name}",
+                  attachment_type=AttachmentType.PNG)
 
 
 @pytest.fixture
