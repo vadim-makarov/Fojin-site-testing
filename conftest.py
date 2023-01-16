@@ -36,7 +36,7 @@ def browser(request) -> webdriver:
     browser.quit()
 
 
-def screenshot(browser, name: str):
+def screenshot(browser, name: str) -> None:
     allure.attach(browser.get_screenshot_as_png(), name=f"Screenshot {name}", attachment_type=AttachmentType.PNG)
     """
     Gets a screenshot and attaches it to the report
