@@ -12,7 +12,7 @@ class MainPageData:
     ]
     ENDPOINTS: list[str] = ['', 'about-us', '', '', 'cases', 'contacts']
 
-    bottom_elem_list: list[tuple[str, str]] = [
+    BOTTOM_ELEM_LIST: list[tuple[str, str]] = [
         MainPageLocators.POLICY,
         MainPageLocators.VK,
         MainPageLocators.TELEGRAM

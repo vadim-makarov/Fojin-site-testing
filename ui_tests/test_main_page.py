@@ -44,7 +44,7 @@ class TestMainPage:
     @allure.feature('User can go to the policy page and to the social page links')
     @allure.title('User can see and go to the "{element}" link')
     @pytest.mark.parametrize('element, locator',
-                             list(zip(MainPageData.BOTTOM_ENDPOINTS, MainPageData.bottom_elem_list)))
+                             list(zip(MainPageData.BOTTOM_ENDPOINTS, MainPageData.BOTTOM_ELEM_LIST)))
     def test_bottom_elements_are_active(self, element: str, locator: tuple, browser) -> None:
         """
         user can go to all bottom links from the main page
