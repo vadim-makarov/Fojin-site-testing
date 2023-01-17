@@ -1,7 +1,8 @@
+from selenium import webdriver
 from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
 from ui_tests.pages.data import FormData
@@ -9,7 +10,7 @@ from ui_tests.pages.locators import FormLocators
 
 
 class MainPage:
-    def __init__(self, browser, url: str):
+    def __init__(self, browser: webdriver, url: str) -> None:
         self.browser = browser
         self.url = url
 
@@ -32,7 +33,7 @@ class MainPage:
         if locator:
             if 'case-container-5' in locator[1]:
                 self.browser.find_element(By.TAG_NAME, 'html').send_keys(Keys.PAGE_UP)
-        WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable(element))
+        WebDriverWait(self.browser, 5).until(ec.element_to_be_clickable(element))
         element.click()
 
     def should_be_some_page(self, page_name: str) -> None:
@@ -44,14 +45,14 @@ class MainPage:
 
     def expl_wait_for_page_download(self, element: str) -> bool:
         try:
-            WebDriverWait(self.browser, 5).until(EC.url_matches(element))
+            WebDriverWait(self.browser, 5).until(ec.url_matches(element))
         except TimeoutException:
             return False
         return True
 
     def expl_wait_for_elem_visibility(self, locator: tuple) -> bool:
         try:
-            WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable(locator))
+            WebDriverWait(self.browser, 5).until(ec.element_to_be_clickable(locator))
         except TimeoutException:
             return False
         return True

@@ -11,7 +11,7 @@ password = os.environ.get('PASSWORD') or 'password'
 
 
 class TestMainPageForm:
-    url = f'https://{username}:{password}@dev.fojin.tech/ru'
+    URL = f'https://{username}:{password}@dev.fojin.tech/ru'
 
     @allure.title('User sends a correct data into the form')
     @severity(severity_level.CRITICAL)
@@ -22,7 +22,7 @@ class TestMainPageForm:
         """
           Test fills the application with correct data and checks the popup answer
         """
-        page = MainPage(browser, self.url)
+        page = MainPage(browser, self.URL)
         page.open()
         for data in positive_data_case:
             page.input_data_to_form(data)
@@ -38,7 +38,7 @@ class TestMainPageForm:
         """
           Test fills the application with incorrect data and checks the answer
         """
-        page = MainPage(browser, self.url)
+        page = MainPage(browser, self.URL)
         page.open()
         for data in negative_data_case:
             page.input_data_to_form(data)

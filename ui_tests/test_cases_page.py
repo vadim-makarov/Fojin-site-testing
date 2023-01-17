@@ -12,7 +12,7 @@ password = os.environ.get('PASSWORD') or 'password'
 
 
 class TestCasesPage:
-    url = f'https://{username}:{password}@dev.fojin.tech/ru/cases/'
+    URL = f'https://{username}:{password}@dev.fojin.tech/ru/cases/'
 
     @allure.title('User can see the {case} case')
     @severity(severity_level.NORMAL)
@@ -22,7 +22,7 @@ class TestCasesPage:
         """
         test checks availability of each case page(doesn't check content!)
         """
-        page = CasesPage(browser, self.url)
+        page = CasesPage(browser, self.URL)
         page.open()
         page.expl_wait_for_page_download('cases')
         page.scroll_to_and_click_element(locator)

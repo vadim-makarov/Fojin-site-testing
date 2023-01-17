@@ -14,7 +14,7 @@ password = os.environ.get('PASSWORD') or 'password'
 
 
 class TestMainPage:
-    url = f'https://{username}:{password}@dev.fojin.tech/ru'
+    URL = f'https://{username}:{password}@dev.fojin.tech/ru'
 
     @allure.title('The server is alive')
     @severity(severity_level.BLOCKER)
@@ -23,7 +23,7 @@ class TestMainPage:
         """
         server is alive
         """
-        r = requests.get(self.url)
+        r = requests.get(self.URL)
         assert r.status_code == 200, f'Server returned {r.status_code} status code'
 
     @severity(severity_level.CRITICAL)
@@ -34,7 +34,7 @@ class TestMainPage:
         """
         user can go to all top links from the main page
         """
-        page = MainPage(browser, self.url)
+        page = MainPage(browser, self.URL)
         page.open()
         page.scroll_to_and_click_element(locator)
         page.expl_wait_for_page_download(endpoint)
@@ -49,7 +49,7 @@ class TestMainPage:
         """
         user can go to all bottom links from the main page
         """
-        page = MainPage(browser, self.url)
+        page = MainPage(browser, self.URL)
         page.open()
         page.scroll_to_the_bottom()
         if page.is_element_present(MainPageLocators.COOKIES):
