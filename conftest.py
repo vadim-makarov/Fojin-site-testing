@@ -1,3 +1,5 @@
+from typing import List, Tuple
+
 import allure
 import pytest
 from allure_commons.types import AttachmentType
@@ -46,7 +48,7 @@ def screenshot(browser, name: str) -> None:
 
 
 @pytest.fixture
-def positive_data_case() -> list[tuple[tuple, list]]:
+def positive_data_case() -> list[tuple[tuple[str, str], str]]:
     """
     The fixture returns list of tuples with locators and data passed into fields
     """
