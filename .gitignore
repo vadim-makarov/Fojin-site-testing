@@ -10,4 +10,4 @@
 */geckodriver.log
 *pytest_cache/
 /geckodriver.log
-*/allure-results/
+/allure-results/

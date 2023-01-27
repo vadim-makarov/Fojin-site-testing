@@ -1,5 +1,3 @@
-from typing import List, Tuple
-
 import allure
 import pytest
 from allure_commons.types import AttachmentType
