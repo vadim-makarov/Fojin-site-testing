@@ -7,12 +7,12 @@ from allure import severity, severity_level
 from ui_tests.pages.cases_page import CasesPage
 from ui_tests.pages.data import CasesData
 
-username = os.environ.get('USERNAME') or 'username'
-password = os.environ.get('PASSWORD') or 'password'
+# username = os.environ.get('USERNAME') or 'username'
+# password = os.environ.get('PASSWORD') or 'password'
 
 
 class TestCasesPage:
-    URL = f'https://{username}:{password}@dev.fojin.tech/ru/cases/'
+    URL = f'https://fojin.tech/ru/cases/'
 
     @allure.title('User can see the {case} case')
     @severity(severity_level.NORMAL)

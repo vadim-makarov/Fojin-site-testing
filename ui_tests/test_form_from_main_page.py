@@ -6,12 +6,12 @@ from allure import severity, severity_level
 from ui_tests.pages.locators import FormLocators
 from ui_tests.pages.main_page import MainPage
 
-username = os.environ.get('USERNAME') or 'username'
-password = os.environ.get('PASSWORD') or 'password'
+# username = os.environ.get('USERNAME') or 'username'
+# password = os.environ.get('PASSWORD') or 'password'
 
 
 class TestMainPageForm:
-    URL = f'https://{username}:{password}@dev.fojin.tech/ru'
+    URL = f'https://fojin.tech/ru'
 
     @allure.title('User sends a correct data into the form')
     @severity(severity_level.CRITICAL)

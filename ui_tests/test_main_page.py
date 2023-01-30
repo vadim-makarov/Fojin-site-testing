@@ -9,12 +9,12 @@ from ui_tests.pages.data import MainPageData
 from ui_tests.pages.locators import MainPageLocators
 from ui_tests.pages.main_page import MainPage
 
-username = os.environ.get('USERNAME') or 'username'
-password = os.environ.get('PASSWORD') or 'password'
+# username = os.environ.get('USERNAME') or 'username'
+# password = os.environ.get('PASSWORD') or 'password'
 
 
 class TestMainPage:
-    URL = f'https://{username}:{password}@dev.fojin.tech/ru'
+    URL = f'https://fojin.tech/ru'
 
     @allure.title('The server is alive')
     @severity(severity_level.BLOCKER)
