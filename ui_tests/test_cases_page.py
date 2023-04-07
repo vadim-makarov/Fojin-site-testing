@@ -7,6 +7,7 @@ from allure import severity, severity_level
 from ui_tests.pages.cases_page import CasesPage
 from ui_tests.pages.data import CasesData
 
+
 # username = os.environ.get('USERNAME') or 'username'
 # password = os.environ.get('PASSWORD') or 'password'
 

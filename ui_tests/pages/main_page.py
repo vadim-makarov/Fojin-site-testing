@@ -22,7 +22,7 @@ class MainPage:
             self.browser.find_element(*locator)
         except NoSuchElementException:
             return False
-        return True
+        return self
 
     def is_element_active(self, locator: tuple) -> bool:
         return self.browser.find_element(*locator).is_enabled()
