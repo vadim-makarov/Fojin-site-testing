@@ -1,5 +1,5 @@
 """Contains data for tests"""
-from ui_tests.pages.locators import FormLocators, CasesLocators, MainPageLocators
+from ui_tests.pages.locators import CasesLocators, MainPageLocators
 
 
 class MainPageData:
@@ -26,6 +26,7 @@ class MainPageData:
     main_page_data_list = list(zip(endpoints, links_list))
     main_page_bottom_list = list(zip(bottom_endpoints, bottom_elem_list))
 
+
 class CasesData:
     """Contains lists from endpoints and locators for the case page check"""
 
@@ -50,15 +51,9 @@ class CasesData:
 class FormData:
     """Contains data for the form"""
 
-    positive_case: list[str] = ['test_user', 'test@fojin.tech', '12345678901', 'some useless information']
+    positive_case: list[str] = [['test_user', 'test@fojin.tech', '12345678901', 'some useless information']]
     success_text: str = 'Сообщение отправлено. В ближайшее время мы с вами свяжемся'
-    unsuccessful_text: str = 'Поле обязательно'
-    locators: list[tuple[str, str]] = [
-        FormLocators.NAME,
-        FormLocators.EMAIL,
-        FormLocators.NUMBER,
-        FormLocators.ABOUT_PROJECT
-    ]
+    unsuccessful_text: str = 'Подтвердите согласие на обработку персональных данных'
     negative_case_1: list[str] = ['          ', 'test@fojin.com', '12345678901', 'some useless information']
     negative_case_2: list[str] = ['test_user', '', '12345678901', 'some  information']
     negative_case_3: list[str] = ['test_user', 'test@fojin.ru', '   ', ' useless information']

@@ -11,7 +11,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from ui_tests.pages.cases_page import CasesPage
 from ui_tests.pages.main_page import MainPage
-from ui_tests.src.data import FormData
 
 
 @pytest.fixture
@@ -20,7 +19,7 @@ def driver(request) -> Generator:
     the fixture downloads the latest driver and creates the browser instance with passed options
     """
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
+    # options.add_argument("--headless")
     options.add_argument('--no-sandbox')
     options.add_argument("--disable-dev-shm-usage")
     service = ChromeService(ChromeDriverManager().install())
@@ -38,22 +37,6 @@ def screenshot(browser, name: str) -> None:
     """Gets a screenshot and attaches it to the report"""
     allure.attach(browser.get_screenshot_as_png(), name=f"Screenshot fail_{name}",
                   attachment_type=AttachmentType.PNG)
-
-
-@pytest.fixture
-def positive_data_case() -> list[tuple[tuple[str, str], str]]:
-    """
-    The fixture returns list of tuples with locators and data passed into fields
-    """
-    return list(zip(FormData.locators, FormData.positive_case))
-
-
-@pytest.fixture(params=FormData.negative_cases)
-def negative_data_case(request) -> list[tuple[tuple, list]]:
-    """
-    The fixture calls one time for each parameter and return values one by one
-    """
-    return list(zip(FormData.locators, request.param))
 
 
 @pytest.fixture

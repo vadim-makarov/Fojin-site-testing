@@ -35,8 +35,8 @@ class FormLocators:
     """Contains locators for the request form"""
     NAME = (By.NAME, 'name')
     EMAIL = (By.NAME, 'email')
-    NUMBER = (By.NAME, 'phone')
+    PHONE_NUMBER = (By.NAME, 'phone')
     ABOUT_PROJECT = (By.NAME, 'about')
-    SEND_BUTTON = (By.CSS_SELECTOR, '#form > div > div > form > div:nth-child(2) > div.sc-63050886-2.gpFpVi')
+    SEND_BUTTON = (By.CSS_SELECTOR, "button[type='submit']")
     POPUP = (By.CSS_SELECTOR, '#form > div > div > div')
     FORM = (By.CSS_SELECTOR, '#form > div > div > form')

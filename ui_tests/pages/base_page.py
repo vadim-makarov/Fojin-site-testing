@@ -11,7 +11,7 @@ from ui_tests.pages.locators import MainPageLocators
 class BasePage:
     """Class contains common methods"""
 
-    def __init__(self, driver: WebDriver, timeout=20) -> None:
+    def __init__(self, driver: WebDriver, timeout=60) -> None:
         self.driver = driver
         self.url = None
         self.wait = WebDriverWait(self.driver, timeout, poll_frequency=1)
