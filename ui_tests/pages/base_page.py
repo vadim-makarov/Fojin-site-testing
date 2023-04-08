@@ -1,5 +1,5 @@
 """Module contains Base Page class"""
-from selenium.common import NoSuchElementException, ElementClickInterceptedException
+from selenium.common import NoSuchElementException, ElementClickInterceptedException, TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,7 +11,7 @@ from ui_tests.pages.locators import MainPageLocators
 class BasePage:
     """Class contains common methods"""
 
-    def __init__(self, driver: WebDriver, timeout=10) -> None:
+    def __init__(self, driver: WebDriver, timeout=20) -> None:
         self.driver = driver
         self.url = None
         self.wait = WebDriverWait(self.driver, timeout, poll_frequency=1)
@@ -45,8 +45,11 @@ class BasePage:
 
     def should_be_some_page(self, page_name: str) -> bool:
         """Checks that the name of the current page contains the passed url"""
-        self.wait.until(EC.url_contains(page_name))
-        return page_name in self.driver.current_url
+        try:
+            self.wait.until(EC.url_contains(page_name))
+        except TimeoutException:
+            return False
+        return True
 
     def go_to_the_next_window(self):
         """Waits for a new window to open and switches to it"""

@@ -9,6 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
+from ui_tests.pages.cases_page import CasesPage
 from ui_tests.pages.main_page import MainPage
 from ui_tests.src.data import FormData
 
@@ -19,12 +20,12 @@ def driver(request) -> Generator:
     the fixture downloads the latest driver and creates the browser instance with passed options
     """
     options = webdriver.ChromeOptions()
-    # options.add_argument("--headless")
+    options.add_argument("--headless")
     options.add_argument('--no-sandbox')
     options.add_argument("--disable-dev-shm-usage")
     service = ChromeService(ChromeDriverManager().install())
     browser = webdriver.Chrome(service=service, options=options)
-    browser.maximize_window()
+    browser.set_window_size(1920, 1080)
     failed_before = request.session.testsfailed
     yield browser
     if request.session.testsfailed != failed_before:
@@ -44,20 +45,28 @@ def positive_data_case() -> list[tuple[tuple[str, str], str]]:
     """
     The fixture returns list of tuples with locators and data passed into fields
     """
-    return list(zip(FormData.LOCATORS, FormData.POSITIVE_CASE))
+    return list(zip(FormData.locators, FormData.positive_case))
 
 
-@pytest.fixture(params=FormData.NEGATIVE_CASES)
+@pytest.fixture(params=FormData.negative_cases)
 def negative_data_case(request) -> list[tuple[tuple, list]]:
     """
     The fixture calls one time for each parameter and return values one by one
     """
-    return list(zip(FormData.LOCATORS, request.param))
+    return list(zip(FormData.locators, request.param))
 
 
 @pytest.fixture
 def main_page(driver) -> MainPage:
     """Opens a main page"""
     page = MainPage(driver)
+    page.open()
+    return page
+
+
+@pytest.fixture
+def cases_page(driver) -> MainPage:
+    """Opens a main page"""
+    page = CasesPage(driver)
     page.open()
     return page

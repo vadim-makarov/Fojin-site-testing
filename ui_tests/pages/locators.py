@@ -20,15 +20,15 @@ class MainPageLocators:
 class CasesLocators:
     """Contains locators for the cases page"""
 
-    CASE_1 = (By.CSS_SELECTOR, '.case-container-1 > div:nth-child(2)')  # EdTech
-    CASE_2 = (By.CSS_SELECTOR, '.case-container-2 > div:nth-child(1) > div:nth-child(1)')  # E-commerce
-    CASE_3 = (By.CSS_SELECTOR, '.case-container-3 > div:nth-child(1) > div:nth-child(1)')  # Entertainment, marketing
-    CASE_4 = (By.CSS_SELECTOR, '.case-container-4 > div:nth-child(2) > div:nth-child(1)')  # Business, B2B
-    CASE_5 = (By.CSS_SELECTOR, '.case-container-5 > div:nth-child(2) > div:nth-child(1)')  # Crypto !!!Flaky!!!
-    CASE_6 = (By.CSS_SELECTOR, '.case-container-6 > div:nth-child(1) > div:nth-child(1)')
-    CASE_7 = (By.CSS_SELECTOR, '.case-container-7 > div:nth-child(1) > div:nth-child(1)')
-    CASE_8 = (By.CSS_SELECTOR, '.case-container-8 > div:nth-child(1) > div:nth-child(1)')
-    CASE_9 = (By.CSS_SELECTOR, '.case-container-9 > div:nth-child(1) > div:nth-child(1)')
+    CASE_1 = (By.CSS_SELECTOR, "div[href$='cases/1']")
+    CASE_2 = (By.CSS_SELECTOR, "div[href$='cases/2']")
+    CASE_3 = (By.CSS_SELECTOR, "div[href$='cases/3']")
+    CASE_4 = (By.CSS_SELECTOR, "div[href$='cases/4']")
+    CASE_5 = (By.CSS_SELECTOR, "div[href$='cases/5']")
+    CASE_6 = (By.CSS_SELECTOR, "div[href$='cases/6']")
+    CASE_7 = (By.CSS_SELECTOR, "div[href$='cases/7']")
+    CASE_8 = (By.CSS_SELECTOR, "div[href$='cases/8']")
+    CASE_9 = (By.CSS_SELECTOR, "div[href$='cases/9']")
 
 
 class FormLocators:

@@ -13,7 +13,7 @@ class TestMainPage:
     @severity(severity_level.CRITICAL)
     @allure.feature('User can go to all top links')
     @allure.title('User can see and go to the "{endpoint}" link')
-    @pytest.mark.parametrize('endpoint, locator', list(zip(MainPageData.ENDPOINTS, MainPageData.LINKS_LIST)))
+    @pytest.mark.parametrize('endpoint, locator', MainPageData.main_page_data_list, ids=MainPageData.endpoints)
     def test_link_names(self, main_page: MainPage, endpoint: str, locator: tuple) -> None:
         """user can go to all top links from the main page"""
         main_page.find_and_click_element(locator)
@@ -22,8 +22,7 @@ class TestMainPage:
     @severity(severity_level.MINOR)
     @allure.feature('User can go to the policy page and to the social page links')
     @allure.title('User can see and go to the "{element}" link')
-    @pytest.mark.parametrize('endpoint, locator',
-                             list(zip(MainPageData.BOTTOM_ENDPOINTS, MainPageData.BOTTOM_ELEM_LIST)))
+    @pytest.mark.parametrize('endpoint, locator', MainPageData.main_page_bottom_list, ids=MainPageData.bottom_endpoints)
     def test_bottom_elements_are_active(self, endpoint: str, locator: tuple, main_page: MainPage) -> None:
         """
         user can go to all bottom links from the main page
