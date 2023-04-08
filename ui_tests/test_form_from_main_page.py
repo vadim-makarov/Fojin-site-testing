@@ -1,46 +1,36 @@
-import os
-
+"""Contains main page form class"""
 import allure
+import pytest
 from allure import severity, severity_level
 
-from ui_tests.pages.locators import FormLocators
 from ui_tests.pages.main_page import MainPage
-
-# username = os.environ.get('USERNAME') or 'username'
-# password = os.environ.get('PASSWORD') or 'password'
+from ui_tests.src.data import FormData
 
 
 class TestMainPageForm:
-    URL = f'https://fojin.tech/ru'
+    """Contains tests for the main page request form """
 
+    @pytest.mark.skip(reason='Site is alive')
     @allure.title('User sends a correct data into the form')
     @severity(severity_level.CRITICAL)
     @allure.feature('User sends correct data')
     @allure.description('User is scrolling to the bottom and sends correct data')
-
-    def test_positive_form_data(self, browser, positive_data_case: list) -> None:
+    @pytest.mark.parametrize('case', FormData.positive_case)
+    def test_positive_form_data(self, main_page: MainPage, case: list) -> None:
         """
           Test fills the application with correct data and checks the popup answer
         """
-        page = MainPage(browser, self.URL)
-        page.open()
-        for data in positive_data_case:
-            page.input_data_to_form(data)
-        page.scroll_to_and_click_element(FormLocators.SEND_BUTTON)
-        page.expl_wait_for_elem_visibility(FormLocators.POPUP)
-        page.check_popup_is_presented(FormLocators.POPUP)
+        main_page.fill_the_form(case)
+        assert main_page.popup_is_presented(), 'Success popup is not presented'
 
     @allure.title('User sends an incorrect data into the request form')
     @severity(severity_level.MINOR)
-    @allure.feature("User sends a incorrect data")
+    @allure.feature("User sends an incorrect data")
     @allure.description('User is scrolling to the bottom and sends wrong data')
-    def test_negative_form_data(self, browser, negative_data_case: list) -> None:
+    @pytest.mark.parametrize('case', FormData.negative_cases)
+    def test_negative_form_data(self, main_page: MainPage, case: list) -> None:
         """
           Test fills the application with incorrect data and checks the answer
         """
-        page = MainPage(browser, self.URL)
-        page.open()
-        for data in negative_data_case:
-            page.input_data_to_form(data)
-        page.scroll_to_and_click_element(FormLocators.SEND_BUTTON)
-        page.check_popup_is_not_presented(FormLocators.POPUP)
+        main_page.fill_the_form(case)
+        assert main_page.error_message_appears(), 'There is no unsuccessful message in the form'
