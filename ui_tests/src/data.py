@@ -6,7 +6,7 @@ class MainPageData:
     """Contains links and endpoints for the main page"""
     URL = 'https://fojin.tech/ru'
 
-    links_list: list[tuple[str, str]] = [
+    links_list = [
         MainPageLocators.MAIN_PAGE,
         MainPageLocators.ABOUT_US,
         MainPageLocators.SERVICES,
@@ -14,14 +14,14 @@ class MainPageData:
         MainPageLocators.CASES,
         MainPageLocators.CONTACTS
     ]
-    endpoints: list[str] = ['', 'about-us', '', '', 'cases', 'contacts']
+    endpoints = ['', 'about-us', '', '', 'cases', 'contacts']
 
     bottom_elem_list: list[tuple[str, str]] = [
         MainPageLocators.VK,
         MainPageLocators.TELEGRAM
     ]
 
-    bottom_endpoints: list[str] = ['vk.com/fojin', 't.me/fojin_tech']
+    bottom_endpoints = ['vk.com/fojin', 't.me/fojin_tech']
 
     main_page_data_list = list(zip(endpoints, links_list))
     main_page_bottom_list = list(zip(bottom_endpoints, bottom_elem_list))
@@ -32,9 +32,9 @@ class CasesData:
 
     URL = 'https://fojin.tech/cases/'
 
-    cases_nums_list: list[str] = list('123456789')
+    cases_nums_list = list('123456789')
 
-    locators: list[tuple[str, str]] = [
+    locators = [
         CasesLocators.CASE_1,
         CasesLocators.CASE_2,
         CasesLocators.CASE_3,
@@ -51,11 +51,11 @@ class CasesData:
 class FormData:
     """Contains data for the form"""
 
-    positive_case: list[str] = [['test_user', 'test@fojin.tech', '12345678901', 'some useless information']]
+    positive_case = [['test_user', 'test@fojin.tech', '12345678901', 'some useless information']]
     success_text: str = 'Сообщение отправлено. В ближайшее время мы с вами свяжемся'
     unsuccessful_text: str = 'Подтвердите согласие на обработку персональных данных'
-    negative_case_1: list[str] = ['          ', 'test@fojin.com', '12345678901', 'some useless information']
-    negative_case_2: list[str] = ['test_user', '', '12345678901', 'some  information']
-    negative_case_3: list[str] = ['test_user', 'test@fojin.ru', '   ', ' useless information']
-    negative_case_4: list[str] = ['test_user', 'test@fojin.fr', '12345678901', '     ']
-    negative_cases: list[list[str]] = [negative_case_1, negative_case_2, negative_case_3, negative_case_4]
+    negative_case_1 = ['          ', 'test@fojin.com', '12345678901', 'some useless information']
+    negative_case_2 = ['test_user', '', '12345678901', 'some  information']
+    negative_case_3 = ['test_user', 'test@fojin.ru', '   ', ' useless information']
+    negative_case_4 = ['test_user', 'test@fojin.fr', '12345678901', '     ']
+    negative_cases = [negative_case_1, negative_case_2, negative_case_3, negative_case_4]
