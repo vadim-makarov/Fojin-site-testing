@@ -16,7 +16,7 @@ class MainPageData:
     ]
     endpoints = ['', 'about-us', '', '', 'cases', 'contacts']
 
-    bottom_elem_list: list[tuple[str, str]] = [
+    bottom_elem_list = [
         MainPageLocators.VK,
         MainPageLocators.TELEGRAM
     ]
@@ -52,8 +52,8 @@ class FormData:
     """Contains data for the form"""
 
     positive_case = [['test_user', 'test@fojin.tech', '12345678901', 'some useless information']]
-    success_text: str = 'Сообщение отправлено. В ближайшее время мы с вами свяжемся'
-    unsuccessful_text: str = 'Подтвердите согласие на обработку персональных данных'
+    success_text = 'Сообщение отправлено. В ближайшее время мы с вами свяжемся'
+    unsuccessful_text = 'Подтвердите согласие на обработку персональных данных'
     negative_case_1 = ['          ', 'test@fojin.com', '12345678901', 'some useless information']
     negative_case_2 = ['test_user', '', '12345678901', 'some  information']
     negative_case_3 = ['test_user', 'test@fojin.ru', '   ', ' useless information']
